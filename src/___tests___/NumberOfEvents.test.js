@@ -1,6 +1,7 @@
-import { render } from "@testing-library/react";
+import { render, within, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import NumberOfEvents from "../components/NumberOfEvents";
+import App from "../App";
 
 describe("<NumberOfEvents /> component", () => {
   let NumberOfEventsComponent;
@@ -27,5 +28,22 @@ describe("<NumberOfEvents /> component", () => {
     const input = NumberOfEventsComponent.queryByRole("textbox");
     await user.type(input, "{backspace}{backspace}10");
     expect(input).toHaveValue("10");
+  });
+});
+
+describe("<NumberOfEvents /> component integration", () => {
+  test("User can change the number of events displayed", async () => {
+    const AppComponent = render(<App />);
+    const AppDOM = AppComponent.container.firstChild;
+
+    const NumberOfEventsDOM = AppDOM.querySelector("#NumberOfEvents");
+    const NumberOfEventsInput =
+      within(NumberOfEventsDOM).queryByRole("textbox");
+
+    await userEvent.type(NumberOfEventsInput, "{backspace}{backspace}10");
+    const EventListDOM = AppDOM.querySelector("#event-list");
+    const allRenderedEventItems =
+      within(EventListDOM).queryAllByRole("listitem");
+    expect(allRenderedEventItems.length).toEqual(10);
   });
 });
