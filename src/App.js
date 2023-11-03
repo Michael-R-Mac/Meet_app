@@ -8,7 +8,7 @@ import { extractLocations, getEvents } from "./api";
 const App = () => {
   const [AllLocations, setAllLocations] = useState([]);
   const [ChangeNumberOfEvents, setChangeNumberOfEvents] = useState(32);
-  const [Events, setEvents] = useState([]);
+  const [events, setEvents] = useState([]);
   const [CurrentCity, setCurrentCity] = useState("See all cities");
 
   const fetchData = async () => {
@@ -29,7 +29,7 @@ const App = () => {
     <div className="App">
       <CitySearch allLocations={AllLocations} setCurrentCity={setCurrentCity} />
       <NumberOfEvents setChangeNumberOfEvents={setChangeNumberOfEvents} />
-      <EventList Events={Events} />
+      <EventList events={events} />
     </div>
   );
 };

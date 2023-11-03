@@ -1,7 +1,4 @@
-import React, { useState } from "react";
-
-const NumberOfEvents = () => {
-  const [ChangeNumberOfEvents, setChangeNumberOfEvents] = useState("");
+const NumberOfEvents = ({ setChangeNumberOfEvents }) => {
   const handleChange = (event) => {
     const value = event.target.value;
     setChangeNumberOfEvents(value);
