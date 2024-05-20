@@ -1,7 +1,16 @@
-const NumberOfEvents = ({ setChangeNumberOfEvents }) => {
+const NumberOfEvents = ({ setChangeNumberOfEvents, setErrorAlert }) => {
   const handleChange = (event) => {
     const value = event.target.value;
     setChangeNumberOfEvents(value);
+    let infoText;
+    if (value <= 0) {
+      infoText = "Only positive numbers are allowed";
+      setChangeNumberOfEvents(0);
+    } else {
+      infoText = "";
+      setChangeNumberOfEvents(value);
+    }
+    setErrorAlert(infoText);
   };
 
   return (

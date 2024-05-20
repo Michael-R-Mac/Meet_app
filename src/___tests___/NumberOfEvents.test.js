@@ -8,7 +8,10 @@ describe("<NumberOfEvents /> component", () => {
 
   beforeEach(() => {
     NumberOfEventsComponent = render(
-      <NumberOfEvents setChangeNumberOfEvents={() => {}} />
+      <NumberOfEvents
+        setChangeNumberOfEvents={() => {}}
+        setErrorAlert={() => {}}
+      />
     );
   });
 
