@@ -11,7 +11,7 @@ describe("show/hide event details", () => {
       timeout: 0, // removes any puppeteer/browser timeout limitations (this isn't the same as the timeout of jest)
     });
     page = await browser.newPage();
-    await page.goto("http://192.168.1.63/");
+    await page.goto("http://localhost:3000/Meet_app");
     await page.waitForSelector(".event");
   });
 
