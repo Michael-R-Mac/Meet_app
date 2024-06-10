@@ -5,6 +5,8 @@ import NumberOfEvents from "./components/NumberOfEvents";
 import { useEffect, useState } from "react";
 import { extractLocations, getEvents } from "./api";
 import { InfoAlert, ErrorAlert, WarningAlert } from "./components/Alert";
+import CityEventsChart from "./components/CityEventsChart";
+import EventGenresChart from "./components/EventGenresChart";
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
@@ -50,6 +52,10 @@ const App = () => {
         setChangeNumberOfEvents={setChangeNumberOfEvents}
         setErrorAlert={setErrorAlert}
       />
+      <div className="charts-container">
+        <CityEventsChart allLocations={allLocations} events={events} />
+        <EventGenresChart events={events} />
+      </div>
       <EventList events={events} />
     </div>
   );
